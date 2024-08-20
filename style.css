@@ -1,0 +1,131 @@
+/* General body styling */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #1a1a1a; /* Dark background */
+    color: #f9d71c; /* Bright yellow text */
+}
+
+/* Header styling */
+header {
+    background-color: #f9d71c; /* Bright yellow header */
+    padding: 20px;
+    text-align: center;
+    color: #1a1a1a; /* Dark text for contrast */
+}
+
+header nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #1a1a1a;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav a:hover {
+    color: #e0e0e0; /* Light grey on hover */
+}
+
+/* Sidebar styling */
+.sidebar {
+    background-color: #333; /* Dark sidebar */
+    padding: 20px;
+    color: #f9d71c; /* Bright text */
+    width: 200px;
+    min-height: 100vh; /* Full height sidebar */
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li a {
+    color: #f9d71c;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+    transition: color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    color: #e0e0e0; /* Light grey on hover */
+}
+
+/* Main container styling */
+.main-container {
+    display: flex;
+    align-items: flex-start; /* Aligns sidebar and content at the top */
+}
+
+/* Content styling */
+.content {
+    flex: 1;
+    padding: 20px;
+    margin-left: 20px;
+}
+
+/* Search bar styling */
+#search {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#search input {
+    width: 50%;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #f9d71c; /* Border matching the theme */
+}
+
+/* Centering the car grid */
+.car-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the car grid */
+    gap: 20px; /* Space between the car cards */
+    margin: 0 auto; /* Center the grid horizontally */
+    max-width: 1200px; /* Restrict the width of the car grid */
+}
+
+/* Car card styling */
+.car-card {
+    background-color: #f9d71c; /* Bright yellow background */
+    color: #1a1a1a; /* Dark text */
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 200px; /* Fixed width for consistency */
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.car-card img {
+    max-width: 100%;
+    border-radius: 5px;
+    border: 2px solid #1a1a1a; /* Dark border around images */
+}
+
+.car-title {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.car-link {
+    display: block;
+    margin-top: 10px;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.car-link:hover {
+    color: #e0e0e0; /* Light grey on hover */
+}
