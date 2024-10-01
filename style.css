@@ -1,122 +1,96 @@
-/* General body styles */
+/* General Styles */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #eaeaea; /* Light background for contrast */
+    background-color: #f4f4f4;
+    color: #333;
 }
 
-/* Header styles */
 header {
-    background-color: #004080; /* Dark blue */
-    color: white;
-    padding: 20px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 20px 0;
     text-align: center;
 }
 
-/* Navigation styles */
 nav a {
-    color: white;
+    color: #fff;
     text-decoration: none;
-    margin: 0 15px;
-    font-weight: bold;
+    padding: 10px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-/* Sidebar styles */
-.sidebar {
-    width: 200px;
-    background-color: #00509E; /* Medium blue */
-    padding: 20px;
-    color: white;
-    position: relative; /* Positioned relative to connect with footer */
-    height: calc(100vh - 120px); /* Full height minus header and footer */
+nav a:hover {
+    background-color: #0056b3;
 }
 
-/* Main container styles */
+/* Main Container */
 .main-container {
     display: flex;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+/* Content Area */
+.content {
+    flex: 3;
     padding: 20px;
 }
 
-/* Content styles */
-.content {
+/* Sidebar */
+.sidebar {
     flex: 1;
     padding: 20px;
+    background-color: #fff;
+    margin-left: 20px;
+    border-radius: 5px;
 }
 
-/* Section styles */
-h2 {
-    color: #004080; /* Header blue */
-    border-bottom: 2px solid #00509E; /* Sidebar blue */
-    padding-bottom: 10px;
+.sidebar h3 {
+    margin-top: 0;
 }
 
-/* Car card grid styles */
+/* Car Companies Section */
+#car-companies {
+    margin-top: 20px;
+}
+
 .car-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 20px;
 }
 
-/* Car card styles */
 .car-card {
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
-
-/* Image styles */
-.car-card img {
-    width: 100%;
-    height: auto;
-    border-bottom: 2px solid #004080; /* Header blue */
-}
-
-/* Title styles */
-.car-title {
-    font-size: 1.2em;
+    background-color: #fff;
     padding: 15px;
-    color: #333; /* Dark gray */
+    border-radius: 5px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Link styles */
+.car-card img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+
+.car-title {
+    margin: 10px 0;
+}
+
 .car-link {
-    display: block;
-    text-align: center;
-    background-color: #004080; /* Dark blue */
+    display: inline-block;
+    padding: 5px 10px;
+    background-color: #007bff;
     color: white;
     text-decoration: none;
-    padding: 10px 0;
-    font-weight: bold;
-    border-radius: 0 0 10px 10px;
-    transition: background-color 0.3s;
+    border-radius: 5px;
 }
 
-/* Hover effects */
-.car-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.car-card:hover .car-link {
-    background-color: #00509E; /* Medium blue on hover */
-}
-
-/* Footer styles */
-footer {
-    background-color: #004080; /* Dark blue */
-    color: white;
-    text-align: center;
-    padding: 20px;
-    position: relative; /* Positioned relative to connect with sidebar */
-    margin-top: -20px; /* Negative margin to overlap with sidebar */
-}
-
-/* Clearfix for main-container to ensure sidebar and content align */
-.main-container::after {
-    content: "";
-    display: table;
-    clear: both;
+.car-link:hover {
+    background-color: #0056b3;
 }
