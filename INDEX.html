@@ -6,6 +6,67 @@
     <meta name="msvalidate.01" content="885FFD3CE1B8BD54D5F689EC4E57D868"> 
     <title>Car Overview - Home</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        nav a {
+            margin: 0 15px;
+            color: white;
+            text-decoration: none;
+        }
+        .main-container {
+            display: flex;
+            flex-direction: row;
+            width: 100%;
+        }
+        .sidebar {
+            width: 200px;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+        .car-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+        }
+        .car-card {
+            border: 1px solid #ccc;
+            padding: 15px;
+            text-align: center;
+        }
+        .car-card img {
+            max-width: 100%;
+            height: auto;
+        }
+        .car-link {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007BFF;
+        }
+        #search {
+            margin-bottom: 20px;
+        }
+        #search input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -18,25 +79,25 @@
         </nav>
     </header>
     <div class="main-container">
+        <aside class="sidebar">
+            <h3>Car Types</h3>
+            <ul>
+                <li><a href="sedan.html">Sedan</a></li>
+                <li><a href="suv.html">SUV</a></li>
+                <li><a href="hatchback.html">Hatchback</a></li>
+                <li><a href="family.html">Family</a></li>
+                <li><a href="muv.html">MUV</a></li>
+                <li><a href="pickup.html">Pickup</a></li>
+            </ul>
+        </aside>
         <main class="content">
             <section id="search">
                 <input type="text" id="searchInput" placeholder="Search car companies...">
             </section>
-            <aside class="sidebar">
-                <h3>Car Types</h3>
-                <ul>
-                    <li><a href="sedan.html">Sedan</a></li>
-                    <li><a href="suv.html">SUV</a></li>
-                    <li><a href="hatchback.html">Hatchback</a></li>
-                    <li><a href="family.html">Family</a></li>
-                    <li><a href="muv.html">MUV</a></li>
-                    <li><a href="pickup.html">Pickup</a></li>
-                </ul>
-            </aside>
             <section id="car-companies" class="container">
                 <h2>Explore Car Brands</h2>
                 <div class="car-grid" id="carGrid">
-                    <!-- Original Car Companies List -->
+                    <!-- Updated Car Companies List -->
                     <div class="car-card">
                         <img src="toyota.jpg" alt="Toyota">
                         <h3 class="car-title">Toyota</h3>
@@ -76,16 +137,6 @@
                         <img src="bmw.jpg" alt="BMW">
                         <h3 class="car-title">BMW</h3>
                         <a href="bmw.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="mercedes.jpg" alt="Mercedes-Benz">
-                        <h3 class="car-title">Mercedes-Benz</h3>
-                        <a href="mercedes.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="audi.jpg" alt="Audi">
-                        <h3 class="car-title">Audi</h3>
-                        <a href="audi.html" class="car-link">Learn More</a>
                     </div>
                     <div class="car-card">
                         <img src="mazda.jpg" alt="Mazda">
@@ -128,19 +179,9 @@
                         <a href="skoda.html" class="car-link">Learn More</a>
                     </div>
                     <div class="car-card">
-                        <img src="seat.jpg" alt="SEAT">
-                        <h3 class="car-title">SEAT</h3>
-                        <a href="seat.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
                         <img src="volvo.jpg" alt="Volvo">
                         <h3 class="car-title">Volvo</h3>
                         <a href="volvo.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="citroen.jpg" alt="Citroën">
-                        <h3 class="car-title">Citroën</h3>
-                        <a href="citroen.html" class="car-link">Learn More</a>
                     </div>
                     <div class="car-card">
                         <img src="dacia.jpg" alt="Dacia">
@@ -164,159 +205,4 @@
                     </div>
                     <div class="car-card">
                         <img src="mahindra.jpg" alt="Mahindra">
-                        <h3 class="car-title">Mahindra</h3>
-                        <a href="mahindra.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="geely.jpg" alt="Geely">
-                        <h3 class="car-title">Geely</h3>
-                        <a href="geely.html" class="car-link">
-                                            <a href="geely.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="changan.jpg" alt="Changan">
-                        <h3 class="car-title">Changan</h3>
-                        <a href="changan.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="greatwall.jpg" alt="Great Wall Motors">
-                        <h3 class="car-title">Great Wall Motors</h3>
-                        <a href="greatwall.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="faw.jpg" alt="FAW">
-                        <h3 class="car-title">FAW</h3>
-                        <a href="faw.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="kawasaki.jpg" alt="Kawasaki">
-                        <h3 class="car-title">Kawasaki</h3>
-                        <a href="kawasaki.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="tesla.jpg" alt="Tesla">
-                        <h3 class="car-title">Tesla</h3>
-                        <a href="tesla.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="porsche.jpg" alt="Porsche">
-                        <h3 class="car-title">Porsche</h3>
-                        <a href="porsche.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="ferrari.jpg" alt="Ferrari">
-                        <h3 class="car-title">Ferrari</h3>
-                        <a href="ferrari.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="lamborghini.jpg" alt="Lamborghini">
-                        <h3 class="car-title">Lamborghini</h3>
-                        <a href="lamborghini.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="bugatti.jpg" alt="Bugatti">
-                        <h3 class="car-title">Bugatti</h3>
-                        <a href="bugatti.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="maserati.jpg" alt="Maserati">
-                        <h3 class="car-title">Maserati</h3>
-                        <a href="maserati.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="astonmartin.jpg" alt="Aston Martin">
-                        <h3 class="car-title">Aston Martin</h3>
-                        <a href="astonmartin.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="jaguar.jpg" alt="Jaguar">
-                        <h3 class="car-title">Jaguar</h3>
-                        <a href="jaguar.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="bentley.jpg" alt="Bentley">
-                        <h3 class="car-title">Bentley</h3>
-                        <a href="bentley.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="rollsroyce.jpg" alt="Rolls-Royce">
-                        <h3 class="car-title">Rolls-Royce</h3>
-                        <a href="rollsroyce.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="landrover.jpg" alt="Land Rover">
-                        <h3 class="car-title">Land Rover</h3>
-                        <a href="landrover.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="infiniti.jpg" alt="Infiniti">
-                        <h3 class="car-title">Infiniti</h3>
-                        <a href="infiniti.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="alfa.jpg" alt="Alfa Romeo">
-                        <h3 class="car-title">Alfa Romeo</h3>
-                        <a href="alfa.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="dodge.jpg" alt="Dodge">
-                        <h3 class="car-title">Dodge</h3>
-                        <a href="dodge.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="gmc.jpg" alt="GMC">
-                        <h3 class="car-title">GMC</h3>
-                        <a href="gmc.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="buick.jpg" alt="Buick">
-                        <h3 class="car-title">Buick</h3>
-                        <a href="buick.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="chrysler.jpg" alt="Chrysler">
-                        <h3 class="car-title">Chrysler</h3>
-                        <a href="chrysler.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="saab.jpg" alt="Saab">
-                        <h3 class="car-title">Saab</h3>
-                        <a href="saab.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="smart.jpg" alt="Smart">
-                        <h3 class="car-title">Smart</h3>
-                        <a href="smart.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="hummer.jpg" alt="Hummer">
-                        <h3 class="car-title">Hummer</h3>
-                        <a href="hummer.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="pininfarina.jpg" alt="Pininfarina">
-                        <h3 class="car-title">Pininfarina</h3>
-                        <a href="pininfarina.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="byton.jpg" alt="Byton">
-                        <h3 class="car-title">Byton</h3>
-                        <a href="byton.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="rivian.jpg" alt="Rivian">
-                        <h3 class="car-title">Rivian</h3>
-                        <a href="rivian.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="faraday.jpg" alt="Faraday Future">
-                        <h3 class="car-title">Faraday Future</h3>
-                        <a href="faraday.html" class="car-link">Learn More</a>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+                        <
