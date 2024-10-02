@@ -1,164 +1,81 @@
-/* General Styles */
 body {
-    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f9; /* Light background */
-    color: #333; /* Dark text color */
 }
 
 header {
-    background-color: #4CAF50; /* Green header */
+    background-color: #333;
     color: #fff;
-    padding: 15px 0;
+    padding: 15px;
     text-align: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
 }
 
-nav a {
-    color: #fff; /* White text */
-    text-decoration: none;
-    padding: 10px 20px;
+header nav a {
+    color: white;
     margin: 0 15px;
-    border-radius: 30px;
-    background-color: transparent;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    text-decoration: none;
 }
 
-nav a:hover {
-    background-color: #fff; /* White background on hover */
-    color: #4CAF50; /* Green text on hover */
-}
-
-/* Main Container */
 .main-container {
     display: flex;
-    max-width: 1200px;
-    margin: 30px auto;
+    flex-direction: row;
+    margin-top: 20px;
 }
 
-/* Sidebar on the left */
 .sidebar {
-    flex: 1;
-    padding: 25px;
-    background-color: #f9f9f9; /* Light sidebar */
-    margin-right: 20px;
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    width: 200px;
+    background-color: #f4f4f4;
+    padding: 20px;
 }
 
-.sidebar h3 {
-    margin-top: 0;
-    color: #333; /* Dark header text */
+.content {
+    flex-grow: 1;
+    padding: 20px;
 }
 
 .sidebar ul {
-    list-style: none;
+    list-style-type: none;
     padding: 0;
 }
 
 .sidebar ul li {
-    margin: 15px 0;
+    margin-bottom: 10px;
 }
 
 .sidebar ul li a {
-    color: #4CAF50; /* Green links */
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.sidebar ul li a:hover {
-    color: #333; /* Darker color on hover */
-}
-
-/* Content Area */
-.content {
-    flex: 3;
-    padding: 25px;
-    background-color: #fff; /* White content background */
-    border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
-}
-
-/* Car Companies Section */
-#car-companies {
-    margin-top: 30px;
+    color: #333;
 }
 
 .car-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 25px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
 .car-card {
-    background-color: #f1f1f1; /* Light card background */
-    padding: 20px;
-    border-radius: 15px;
+    width: 200px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    overflow: hidden;
     text-align: center;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.car-card:hover {
-    transform: translateY(-5px); /* Subtle lift effect */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+    padding: 10px;
 }
 
 .car-card img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
-    border-radius: 10px;
 }
 
 .car-title {
+    font-size: 18px;
     margin: 10px 0;
-    font-weight: 600;
-    font-size: 1.3em;
-    color: #333; /* Dark title */
 }
 
 .car-link {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #4CAF50; /* Green button */
-    color: white;
+    color: #0066cc;
     text-decoration: none;
-    border-radius: 30px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.car-link:hover {
-    background-color: #388E3C; /* Darker green on hover */
-    transform: scale(1.02); /* Slight scale on hover */
-}
-
-/* Search Input */
-#searchInput {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd; /* Light border */
-    border-radius: 10px;
-    margin-bottom: 30px;
-    background-color: #fff; /* White input background */
-    color: #333; /* Dark text */
-}
-
-#searchInput::placeholder {
-    color: #aaa; /* Placeholder text */
-}
-
-#searchInput:focus {
-    border-color: #4CAF50; /* Green border on focus */
-    outline: none; /* Remove outline */
-}
-
-/* Footer */
-footer {
-    text-align: center;
-    padding: 25px 0;
-    background-color: #4CAF50; /* Match header */
-    color: #fff;
-    width: 100%;
 }
