@@ -47,6 +47,20 @@
             border: 1px solid #ccc;
             padding: 15px;
             text-align: center;
+            opacity: 0; /* Initially hidden */
+            transform: translateY(20px); /* Start position */
+            animation: fadeInUp 0.5s forwards; /* Animation */
+            animation-delay: var(--animation-delay); /* Delay */
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1; /* Fully visible */
+                transform: translateY(0); /* End position */
+            }
+        }
+        .car-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
         .car-card img {
             max-width: 100%;
@@ -205,7 +219,7 @@
                     </div>
                     <div class="car-card">
                         <img src="mahindra.jpg" alt="Mahindra">
-                        <                        <h3 class="car-title">Mahindra</h3>
+                        <h3 class="car-title">Mahindra</h3>
                         <a href="mahindra.html" class="car-link">Learn More</a>
                     </div>
                     <div class="car-card">
@@ -242,6 +256,23 @@
             </section>
         </main>
     </div>
+
+    <script>
+        // Intersection Observer for triggering animations
+        const carCards = document.querySelectorAll('.car-card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing after the animation
+                }
+            });
+        });
+
+        carCards.forEach(card => {
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
-
