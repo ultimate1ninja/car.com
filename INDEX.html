@@ -1,356 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="msvalidate.01" content="885FFD3CE1B8BD54D5F689EC4E57D868"> 
-    <title>Car Overview - Home</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Car Companies</title>
     <style>
         body {
-            display: flex;
-            flex-direction: column;
+            font-family: Arial, sans-serif;
             margin: 0;
-            font-family: 'Arial', sans-serif;
-            background-color: #121212; /* Dark background */
-            color: #e0e0e0; /* Light text color */
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #e0e0e0;
         }
+
+        /* Header Section */
         header {
-            background-color: #1e1e1e; /* Darker header */
-            color: #00bcd4; /* Bright accent color */
-            padding: 20px;
+            background-color: #2d3e50;
+            color: white;
+            padding: 20px 0;
             text-align: center;
-            border-bottom: 2px solid #00bcd4; /* Border for header */
+            animation: fadeIn 2s ease-out;
         }
-        nav a {
-            margin: 0 15px;
-            color: #00bcd4; /* Bright link color */
-            text-decoration: none;
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5em;
         }
-        nav a:hover {
-            text-decoration: underline; /* Underline on hover */
+
+        /* Hero Section */
+        .hero {
+            background-color: #3b4c62;
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            animation: fadeIn 2s ease-out 1s;
         }
-        .main-container {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
+
+        .hero h2 {
+            margin: 0;
+            font-size: 2em;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 1s forwards;
         }
-        .sidebar {
-            width: 200px;
-            background-color: #1e1e1e; /* Dark sidebar */
-            padding: 20px;
-            border-right: 2px solid #00bcd4; /* Border for sidebar */
+
+        .hero p {
+            font-size: 1.2em;
+            opacity: 0;
+            animation: fadeIn 2s ease-out 2s forwards;
         }
-        .content {
-            flex: 1;
-            padding: 20px;
-        }
+
+        /* Car Company Grid */
         .car-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 20px;
+            padding: 20px;
+            background-color: #f4f4f4;
         }
+
         .car-card {
-            background-color: #292929; /* Card background */
-            border: 1px solid #00bcd4; /* Card border */
-            border-radius: 8px; /* Rounded corners */
-            padding: 15px;
+            background-color: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
             text-align: center;
-            opacity: 0; /* Initially hidden */
-            transform: translateY(20px); /* Start position */
-            animation: fadeInUp 0.5s forwards; /* Animation */
-            animation-delay: var(--animation-delay); /* Delay */
-            transition: transform 0.2s, box-shadow 0.2s; /* Smooth effects */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
         }
+
         .car-card:hover {
-            transform: translateY(-5px); /* Lift effect on hover */
-            box-shadow: 0 4px 20px rgba(0, 188, 212, 0.5); /* Shadow effect */
+            transform: translateY(-10px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
-        @keyframes fadeInUp {
-            to {
-                opacity: 1; /* Fully visible */
-                transform: translateY(0); /* End position */
+
+        /* Ambient lighting effect on hover */
+        .car-card:hover::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transform: translate(-50%, -50%);
+            animation: ambientGlow 2s infinite alternate;
+        }
+
+        .car-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .car-card h3 {
+            margin: 10px 0;
+            font-size: 1.3em;
+            color: #333;
+        }
+
+        .car-card p {
+            margin: 10px;
+            color: #777;
+        }
+
+        /* Fade-in animation */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
             }
         }
-        .car-card.visible {
-            opacity: 1;
-            transform: translateY(0);
+
+        /* Ambient glow effect */
+        @keyframes ambientGlow {
+            0% {
+                box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+            }
         }
-        .car-card img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 5px; /* Rounded image corners */
-        }
-        .car-link {
-            display: block;
-            margin-top: 10px;
-            text-decoration: none;
-            color: #00bcd4; /* Bright link color */
-            font-weight: bold; /* Bold link text */
-        }
-        #search {
-            margin-bottom: 20px;
-        }
-        #search input {
-            width: 100%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #00bcd4; /* Border color */
-            border-radius: 5px; /* Rounded corners */
-            background-color: #1e1e1e; /* Dark input background */
-            color: #e0e0e0; /* Light text color */
-        }
-        #search input::placeholder {
-            color: #bbb; /* Placeholder color */
+
+        /* Media Query for Responsiveness */
+        @media screen and (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .hero h2 {
+                font-size: 1.5em;
+            }
+
+            .hero p {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
+
 <body>
+    <!-- Header -->
     <header>
-        <h1>Welcome to Car Overview</h1>
-        <nav>
-            <a href="luxurious.html">Luxurious</a>
-            <a href="vintage.html">Vintage</a>
-            <a href="classic.html">Classic</a>
-            <a href="hyper.html">Hyper</a>
-        </nav>
+        <h1>Car Companies</h1>
     </header>
-    <div class="main-container">
-        <aside class="sidebar">
-            <h3>Car Types</h3>
-            <ul>
-                <li><a href="sedan.html">Sedan</a></li>
-                <li><a href="suv.html">SUV</a></li>
-                <li><a href="hatchback.html">Hatchback</a></li>
-                <li><a href="family.html">Family</a></li>
-                <li><a href="muv.html">MUV</a></li>
-                <li><a href="pickup.html">Pickup</a></li>
-            </ul>
-        </aside>
-        <main class="content">
-            <section id="search">
-                <input type="text" id="searchInput" placeholder="Search car companies...">
-            </section>
-            <section id="car-companies" class="container">
-                <h2>Explore Car Brands</h2>
-                <div class="car-grid" id="carGrid">
-                    <div class="car-card">
-                        <img src="acura.jpg" alt="Acura">
-                        <h3 class="car-title">Acura</h3>
-                        <a href="acura.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="alfaromeo.jpg" alt="Alfa Romeo">
-                        <h3 class="car-title">Alfa Romeo</h3>
-                        <a href="alfaromeo.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="astonmartin.jpg" alt="Aston Martin">
-                        <h3 class="car-title">Aston Martin</h3>
-                        <a href="astonmartin.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="audi.jpg" alt="Audi">
-                        <h3 class="car-title">Audi</h3>
-                        <a href="audi.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="baic.jpg" alt="BAIC">
-                        <h3 class="car-title">BAIC</h3>
-                        <a href="baic.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="bmw.jpg" alt="BMW">
-                        <h3 class="car-title">BMW</h3>
-                        <a href="bmw.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="buick.jpg" alt="Buick">
-                        <h3 class="car-title">Buick</h3>
-                        <a href="buick.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="cadillac.jpg" alt="Cadillac">
-                        <h3 class="car-title">Cadillac</h3>
-                        <a href="cadillac.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="chevrolet.jpg" alt="Chevrolet">
-                        <h3 class="car-title">Chevrolet</h3>
-                        <a href="chevrolet.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="chrysler.jpg" alt="Chrysler">
-                        <h3 class="car-title">Chrysler</h3>
-                        <a href="chrysler.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="citroen.jpg" alt="Citroën">
-                        <h3 class="car-title">Citroën</h3>
-                        <a href="citroen.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="dodge.jpg" alt="Dodge">
-                        <h3 class="car-title">Dodge</h3>
-                        <a href="dodge.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="daewoo.jpg" alt="Daewoo">
-                        <h3 class="car-title">Daewoo</h3>
-                        <a href="daewoo.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="datsun.jpg" alt="Datsun">
-                        <h3 class="car-title">Datsun</h3>
-                        <a href="datsun.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="de_soto.jpg" alt="DeSoto">
-                        <h3 class="car-title">DeSoto</h3>
-                        <a href="desoto.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="daihatsu.jpg" alt="Daihatsu">
-                        <h3 class="car-title">Daihatsu</h3>
-                        <a href="daihatsu.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="fiat.jpg" alt="Fiat">
-                        <h3 class="car-title">Fiat</h3>
-                        <a href="fiat.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="ford.jpg" alt="Ford">
-                        <h3 class="car-title">Ford</h3>
-                        <a href="ford.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="gmc.jpg" alt="GMC">
-                        <h3 class="car-title">GMC</h3>
-                        <a href="gmc.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="honda.jpg" alt="Honda">
-                        <h3 class="car-title">Honda</h3>
-                        <a href="honda.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="hyundai.jpg" alt="Hyundai">
-                        <h3 class="car-title">Hyundai</h3>
-                        <a href="hyundai.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="infiniti.jpg" alt="Infiniti">
-                        <h3 class="car-title">Infiniti</h3>
-                        <a href="infiniti.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="jaguar.jpg" alt="Jaguar">
-                        <h3 class="car-title">Jaguar</h3>
-                        <a href="jaguar.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="jeep.jpg" alt="Jeep">
-                        <h3 class="car-title">Jeep</h3>
-                        <a href="jeep.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="kia.jpg" alt="Kia">
-                        <h3 class="car-title">Kia</h3>
-                        <a href="kia.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="landrover.jpg" alt="Land Rover">
-                        <h3 class="car-title">Land Rover</h3>
-                        <a href="landrover.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="lincoln.jpg" alt="Lincoln">
-                        <h3 class="car-title">Lincoln</h3>
-                        <a href="lincoln.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="mazda.jpg" alt="Mazda">
-                        <h3 class="car-title">Mazda</h3>
-                        <a href="mazda.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="mercedes.jpg" alt="Mercedes-Benz">
-                        <h3 class="car-title">Mercedes-Benz</h3>
-                        <a href="mercedes.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="mini.jpg" alt="Mini">
-                        <h3 class="car-title">Mini</h3>
-                        <a href="mini.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="mitsubishi.jpg" alt="Mitsubishi">
-                        <h3 class="car-title">Mitsubishi</h3>
-                        <a href="mitsubishi.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="nissan.jpg" alt="Nissan">
-                        <h3 class="car-title">Nissan</h3>
-                        <a href="nissan.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="peugeot.jpg" alt="Peugeot">
-                        <h3 class="car-title">Peugeot</h3>
-                        <a href="peugeot.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="renault.jpg" alt="Renault">
-                        <h3 class="car-title">Renault</h3>
-                        <a href="renault.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="saab.jpg" alt="Saab">
-                        <h3 class="car-title">Saab</h3>
-                        <a href="saab.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="subaru.jpg" alt="Subaru">
-                        <h3 class="car-title">Subaru</h3>
-                        <a href="subaru.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="suzuki.jpg" alt="Suzuki">
-                        <h3 class="car-title">Suzuki</h3>
-                        <a href="suzuki.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="toyota.jpg" alt="Toyota">
-                        <h3 class="car-title">Toyota</h3>
-                        <a href="toyota.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="volkswagen.jpg" alt="Volkswagen">
-                        <h3 class="car-title">Volkswagen</h3>
-                        <a href="volkswagen.html" class="car-link">Learn More</a>
-                    </div>
-                    <div class="car-card">
-                        <img src="volvo.jpg" alt="Volvo">
-                        <h3 class="car-title">Volvo</h3>
-                        <a href="volvo.html" class="car-link">Learn More</a>
-                    </div>
-                </div>
-            </section>
-        </main>
-    </div>
-    <script>
-        document.getElementById('searchInput').addEventListener('input', function() {
-            const filter = this.value.toLowerCase();
-            const cards = document.querySelectorAll('.car-card');
-            cards.forEach(card => {
-                const title = card.querySelector('.car-title').innerText.toLowerCase();
-                if (title.includes(filter)) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    </script>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Explore Famous Car Brands</h2>
+        <p>Discover the world of iconic car companies, from A to M, excluding supercars and hypercars.</p>
+    </section>
+
+    <!-- Car Company Grid -->
+    <section class="car-grid">
+        <!-- Car Company Cards from A to M -->
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Acura" alt="Acura">
+            <h3>Acura</h3>
+            <p>Japanese luxury vehicles with high-performance features.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Alfa+Romeo" alt="Alfa Romeo">
+            <h3>Alfa Romeo</h3>
+            <p>Italian manufacturer known for sporty sedans and coupes.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=AMC" alt="AMC">
+            <h3>AMC</h3>
+            <p>American manufacturer with iconic models like the Gremlin and Javelin.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Audi" alt="Audi">
+            <h3>Audi</h3>
+            <p>German automaker known for luxury cars with advanced technology.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=BMW" alt="BMW">
+            <h3>BMW</h3>
+            <p>German brand known for precision engineering and luxury performance cars.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Buick" alt="Buick">
+            <h3>Buick</h3>
+            <p>American brand known for elegant and comfortable cars.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Cadillac" alt="Cadillac">
+            <h3>Cadillac</h3>
+            <p>Luxury vehicles with sophisticated designs and advanced tech.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Chrysler" alt="Chrysler">
+            <h3>Chrysler</h3>
+            <p>American brand known for family-friendly vehicles with a modern twist.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Chevrolet" alt="Chevrolet">
+            <h3>Chevrolet</h3>
+            <p>Popular American automaker with a broad range of cars and trucks.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Citroen" alt="Citroën">
+            <h3>Citroën</h3>
+            <p>French brand famous for its innovative designs and comfort.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Dodge" alt="Dodge">
+            <h3>Dodge</h3>
+            <p>American muscle cars and performance-focused vehicles.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Datsun" alt="Datsun">
+            <h3>Datsun</h3>
+            <p>Japanese brand known for affordable cars (now Nissan).</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Daihatsu" alt="Daihatsu">
+            <h3>Daihatsu</h3>
+            <p>Japanese automaker focused on small cars and off-roaders.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=DeLorean" alt="DeLorean">
+            <h3>DeLorean</h3>
+            <p>Famous for the DMC-12, immortalized by "Back to the Future".</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Fiat" alt="Fiat">
+            <h3>Fiat</h3>
+            <p>Italian manufacturer of small, compact cars with great fuel efficiency.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Ford" alt="Ford">
+            <h3>Ford</h3>
+            <p>Iconic American automaker known for trucks and innovative designs.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Honda" alt="Honda">
+            <h3>Honda</h3>
+            <p>Japanese brand known for reliability, efficiency, and value.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Hyundai" alt="Hyundai">
+            <h3>Hyundai</h3>
+            <p>South Korean automaker known for affordable yet high-quality vehicles.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Infiniti" alt="Infiniti">
+            <h3>Infiniti</h3>
+            <p>Luxury division of Nissan, combining performance and comfort.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Isuzu" alt="Isuzu">
+            <h3>Isuzu</h3>
+            <p>Japanese manufacturer specializing in commercial vehicles and diesel engines.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Jaguar" alt="Jaguar">
+            <h3>Jaguar</h3>
+            <p>British brand known for luxury sedans and sports cars.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Jeep" alt="Jeep">
+            <h3>Jeep</h3>
+            <p>Famous for its rugged off-road vehicles and SUVs.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Kia" alt="Kia">
+            <h3>Kia</h3>
+            <p>South Korean automaker offering affordable cars with modern features.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Lexus" alt="Lexus">
+            <h3>Lexus</h3>
+            <p>Luxury division of Toyota, known for reliability and advanced technology.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Lincoln" alt="Lincoln">
+            <h3>Lincoln</h3>
+            <p>Luxury brand of Ford, specializing in high-end sedans and SUVs.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Mazda" alt="Mazda">
+            <h3>Mazda</h3>
+            <p>Japanese automaker known for sporty, fun-to-drive vehicles.</p>
+        </div>
+
+        <div class="car-card">
+            <img src="https://via.placeholder.com/300x150.png?text=Mercedes-Benz" alt="Mercedes-Benz">
+            <h3>Mercedes-Benz</h3>
+            <p>German luxury cars with a reputation for precision and comfort.</p>
+        </div>
+    </section>
+
 </body>
+
 </html>
