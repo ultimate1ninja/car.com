@@ -6,142 +6,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Companies</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #e0e0e0;
-        }
+/* General Body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #121212; /* Dark background */
+    color: white;
+}
 
-        /* Header Section */
-        header {
-            background-color: #2d3e50;
-            color: white;
-            padding: 20px 0;
-            text-align: center;
-            animation: fadeIn 2s ease-out;
-        }
+/* Header */
+header {
+    background-color: #1c1c1c;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    animation: fadeIn 2s ease-out;
+}
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
+/* Header Title */
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
 
-        /* Hero Section */
-        .hero {
-            background-color: #3b4c62;
-            color: white;
-            padding: 80px 20px;
-            text-align: center;
-            animation: fadeIn 2s ease-out 1s;
-        }
+/* Hero Section */
+.hero {
+    background-color: #2a2a2a; /* Slightly lighter dark background */
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    animation: fadeIn 2s ease-out 1s;
+}
 
-        .hero h2 {
-            margin: 0;
-            font-size: 2em;
-            opacity: 0;
-            animation: fadeIn 2s ease-out 1s forwards;
-        }
+.hero h2 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #ff4d4d; /* Bright red for header */
+    opacity: 0;
+    animation: fadeIn 2s ease-out 1s forwards;
+}
 
-        .hero p {
-            font-size: 1.2em;
-            opacity: 0;
-            animation: fadeIn 2s ease-out 2s forwards;
-        }
+.hero p {
+    font-size: 1.2em;
+    color: #b3b3b3; /* Light gray text */
+    opacity: 0;
+    animation: fadeIn 2s ease-out 2s forwards;
+}
 
-        /* Car Company Grid */
-        .car-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            padding: 20px;
-            background-color: #f4f4f4;
-        }
+/* Car Company Grid */
+.car-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+    background-color: #121212; /* Dark background */
+    margin-top: 40px;
+}
 
-        .car-card {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-        }
+/* Car Cards */
+.car-card {
+    background-color: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    animation: fadeIn 2s ease-out;
+}
 
-        .car-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
+/* Glowing Effect on Hover */
+.car-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8); /* Cyan glow */
+}
 
-        /* Ambient lighting effect on hover */
-        .car-card:hover::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            transform: translate(-50%, -50%);
-            animation: ambientGlow 2s infinite alternate;
-        }
+/* Ambient glow effect on hover */
+.car-card:hover::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 255, 255, 0.1); /* Light cyan glow */
+    border-radius: 8px;
+    transform: translate(-50%, -50%);
+    animation: ambientGlow 2s infinite alternate;
+}
 
-        .car-card img {
-            width: 100%;
-            height: 150px;
-            object-fit: cover;
-        }
+/* Car Card Image */
+.car-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
 
-        .car-card h3 {
-            margin: 10px 0;
-            font-size: 1.3em;
-            color: #333;
-        }
+/* Car Card Title */
+.car-card h3 {
+    margin: 10px 0;
+    font-size: 1.3em;
+    color: #ffcc00; /* Bright yellow */
+}
 
-        .car-card p {
-            margin: 10px;
-            color: #777;
-        }
+/* Car Card Description */
+.car-card p {
+    margin: 10px;
+    color: #b3b3b3;
+}
 
-        /* Fade-in animation */
-        @keyframes fadeIn {
-            0% {
-                opacity: 0;
-            }
+/* Fade-in Animation */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
 
-            100% {
-                opacity: 1;
-            }
-        }
+/* Ambient Glow Effect Animation */
+@keyframes ambientGlow {
+    0% {
+        box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
+    }
 
-        /* Ambient glow effect */
-        @keyframes ambientGlow {
-            0% {
-                box-shadow: 0 0 15px rgba(0, 255, 255, 0.8);
-            }
+    100% {
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+    }
+}
 
-            100% {
-                box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
-            }
-        }
+/* Media Query for Responsiveness */
+@media screen and (max-width: 768px) {
+    header h1 {
+        font-size: 2em;
+    }
 
-        /* Media Query for Responsiveness */
-        @media screen and (max-width: 768px) {
-            header h1 {
-                font-size: 2em;
-            }
+    .hero h2 {
+        font-size: 1.5em;
+    }
 
-            .hero h2 {
-                font-size: 1.5em;
-            }
+    .hero p {
+        font-size: 1em;
+    }
+}
 
-            .hero p {
-                font-size: 1em;
-            }
-        }
     </style>
 </head>
 
